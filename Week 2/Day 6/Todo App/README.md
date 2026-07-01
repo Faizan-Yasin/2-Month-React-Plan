@@ -1,16 +1,86 @@
-# React + Vite
+# Week 2 — Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React Todo application built using component-based architecture and localStorage persistence.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Add Todo
+* Edit Todo
+* Delete Todo
+* Toggle Complete / Incomplete
+* Filter (All / Active / Completed)
+* Persist data using localStorage
+* Empty states
+* Theme (Dark Theme / Light Theme)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Component Tree
 
-## Expanding the ESLint configuration
+App
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+└── TodoApp
+    ├── TodoInput
+    ├── FilterBar
+    ├── TodoStats
+    └── TodoList
+        └── TodoItem
+
+---
+
+## useLocalStorage API
+
+Custom hook that works like useState but automatically syncs state with localStorage.
+
+### Usage
+
+```js
+const [todos, setTodos] =
+useLocalStorage("todos", [])
+```
+
+### Parameters
+
+* key → localStorage key
+* initialValue → default value
+
+### Returns
+
+* value
+* setValue
+
+Example:
+
+```js
+setTodos(prev => [...prev, newTodo])
+```
+
+---
+
+## Install
+
+```bash
+npm install
+```
+
+---
+
+## Run
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Build
+
+```bash
+npm run build
+```
