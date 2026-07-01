@@ -11,7 +11,7 @@ const App = () => {
   }, [theme])
 
   return (
-    <div className={theme ? 'light' : 'dark'}>
+    <div>
       <TodoApp theme={theme} setTheme={setTheme} />
     </div>
   )
