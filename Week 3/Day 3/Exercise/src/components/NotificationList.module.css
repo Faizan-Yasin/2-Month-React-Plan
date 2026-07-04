@@ -1,0 +1,12 @@
+.container {
+    position: fixed;
+    top: 20;
+    right: 20;
+}
+
+.notifications {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
