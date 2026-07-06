@@ -1,0 +1,90 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    width: 60vw;
+    height: 3rem;
+    border-radius: 0.6rem;
+    padding: 15px;
+    font-size: larger;
+    margin: 1rem;
+    border: none;
+}
+
+.input:hover {
+    cursor: pointer;
+}
+
+.input:focus {
+    outline: 2px solid blue
+}
+
+.textarea {
+    width: 60vw;
+    height: 12rem;
+    border-radius: 0.6rem;
+    padding: 15px;
+    font-size: larger;
+    border: none;
+}
+
+.textarea:hover {
+    cursor: pointer;
+}
+
+.textarea:focus {
+    outline: 3px solid rgb(1, 1, 194)
+}
+
+.addbutton {
+    width: 60vw;
+    height: 3rem;
+    border-radius: 0.6rem;
+    font-size: larger;
+    margin: 1rem;
+    background-color: #000000;
+    color: white;
+}
+
+.addcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.addbutton:active {
+    transform: scale(0.96);
+}
+
+.dark {
+    background-color: #393E46;
+    color: rgb(208, 206, 206);
+}
+
+.light {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.buttondark {
+    background-color: #393E46;
+    color: rgb(208, 206, 206);
+}
+
+.buttonlight {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.svglight {
+    stroke: white;
+}
+
+.svgdark {
+    stroke: rgb(208, 206, 206);
+}

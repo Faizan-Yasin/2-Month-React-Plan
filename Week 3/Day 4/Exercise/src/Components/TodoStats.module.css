@@ -1,0 +1,56 @@
+.statscontainer {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    margin-top: 0.5rem;
+}
+
+.light {
+    color: black;
+}
+
+.dark {
+    color: rgb(208, 206, 206);
+}
+
+
+@media (max-width: 920px) {
+    .statscontainer {
+        width: 50vw;
+        gap: 30px;
+    }
+
+    .stat {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 665px) {
+
+    .stat {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 555px) {
+
+    .stat {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 445px) {
+
+    .stat {
+        font-size: 0.4rem;
+    }
+}
+
+@media (max-width: 337px) {
+
+    .stat {
+        font-size: 0.3rem;
+    }
+}

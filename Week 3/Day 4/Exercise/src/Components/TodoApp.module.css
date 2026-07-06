@@ -1,0 +1,51 @@
+.container {
+    width: 80vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.notodos {
+    margin: 3rem;
+}
+
+.theme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.dark {
+    stroke: black;
+}
+
+.light {
+    stroke: rgb(208, 206, 206);
+}
+
+.theme:hover {
+    cursor: pointer;
+}
+
+.theme:active {
+    transform: scale(0.9);
+}
+
+@media (max-width:1200px) {
+    .container {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .notodos {
+        font-size: 0.8rem;
+    }
+}
