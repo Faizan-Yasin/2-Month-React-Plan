@@ -26,11 +26,6 @@ const TodoInput = () => {
             dispatch(
                 {
                     type: UPDATE_TODO,
-                    payload: {
-                        id: state.editId,
-                        title: state.form.title,
-                        description: state.form.description,
-                    }
                 })
         }
         else {
