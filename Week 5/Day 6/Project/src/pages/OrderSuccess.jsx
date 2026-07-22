@@ -15,13 +15,13 @@ const OrderSuccess = () => {
       transition={{ duration: 0.4 }}
       className=" flex flex-col items-center justify-center h-screen">
 
-      <h1 className=" text-4xl font-bold text-green-600">Order Confirmed</h1>
+      <motion.h1 className=" text-4xl font-bold text-green-600">Order Confirmed</motion.h1>
 
-      <p className="mt-4">Thank you for your purchase.</p>
+      <motion.p className="mt-4">Thank you for your purchase.</motion.p>
 
-      <Link onClick={() => dispatch(clearCart())} to="/" className=" mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
+      <motion.Link onClick={() => dispatch(clearCart())} to="/" className=" mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
         Continue Shopping
-      </Link>
+      </motion.Link>
 
     </motion.div>
 
