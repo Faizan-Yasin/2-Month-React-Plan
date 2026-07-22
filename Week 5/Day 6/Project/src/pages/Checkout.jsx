@@ -27,7 +27,7 @@ const Checkout = () => {
     await new Promise(r => setTimeout(r, 2000))
     console.log(data);
 
-    toast.success("Order Placed Successfully ✅")
+    toast.success("Order Placed Successfully")
     navigate("/success", { replace: true })
   }
 

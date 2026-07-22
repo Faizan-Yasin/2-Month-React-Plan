@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
             <h3 className='mt-3 text-2xl font-bold text-green-600'>${product.price}</h3>
             <button onClick={() => {
                 dispatch(addItem(product))
-                toast.success("Product Added ✅")
+                toast.success("Product Added")
             }} className='mt-4 w-full rounded-lg py-2 cursor-pointer active:scale-95 bg-blue-600 text-white disabled:bg-gray-400'>
                 Add To Cart
             </button>
