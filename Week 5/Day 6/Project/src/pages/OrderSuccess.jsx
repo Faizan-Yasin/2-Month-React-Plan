@@ -27,13 +27,11 @@ const OrderSuccess = () => {
         transition={{ duration: 0.4 }}
         className="mt-4">Thank you for your purchase.</motion.p>
 
-      <motion.Link
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        onClick={() => dispatch(clearCart())} to="/" className=" mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
-        Continue Shopping
-      </motion.Link>
+      <motion.div>
+        <Link onClick={() => dispatch(clearCart())} to="/" className=" mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
+          Continue Shopping
+        </Link>
+      </motion.div>
 
     </motion.div>
 
