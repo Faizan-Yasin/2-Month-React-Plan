@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchBar from './searchBar'
+import SearchBar from './SearchBar'
 import ThemeToggle from './ThemeToggle'
 import { ShoppingCart } from 'lucide-react'
 import { useSelector, useDispatch } from 'react-redux'
