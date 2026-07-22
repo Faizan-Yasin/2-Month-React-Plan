@@ -36,7 +36,7 @@ const Checkout = () => {
 
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.4 }}
 
       className={`${theme === "light" ? "bg-gray-900 text-black" : "bg-gray-100"} h-screen flex justify-center items-center px-6`}>
       <form onSubmit={handleSubmit(submit)} className={`${theme === "light" ? "bg-gray-700 text-white" : "bg-white"} w-full max-w-md rounded-xl shadow-lg p-8 space-y-3 md:space-y-6`}>

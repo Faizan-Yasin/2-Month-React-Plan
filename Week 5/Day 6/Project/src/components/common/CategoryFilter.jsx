@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useGetCategoriesQuery } from '../../features/products/productApi'
 import { setCategory } from '../../features/ui/uiSlice'
+import { motion } from 'framer-motion'
 
 const CategoryFilter = () => {
 
@@ -19,7 +20,11 @@ const CategoryFilter = () => {
   }
 
   return (
-    <div className='flex flex-wrap gap-3 m-4 ml-6'>
+    <motion.div className='flex flex-wrap gap-3 m-4 ml-6'
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <button onClick={() => dispatch(setCategory("all"))}
         className={`px-4 py-2 font-semibold cursor-pointer active:scale-90 transition rounded-lg shadow-md ${selectedCategory === "all" ? "bg-blue-500 text-white" : `${theme === "light" ? "bg-gray-500" : "bg-gray-200 text-black"}`}`}
       >All</button>
@@ -30,7 +35,7 @@ const CategoryFilter = () => {
           >{category}</button>
         ))
       }
-    </div>
+    </motion.div>
   )
 }
 
