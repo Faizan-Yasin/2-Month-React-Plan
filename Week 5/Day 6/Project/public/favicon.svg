@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <!-- Icon Gradient -->
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Background Container -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)"/>
+
+  <!-- Stylized Shopping Bag -->
+  <path d="M22 22V18C22 12.477 26.477 8 32 8C37.523 8 42 12.477 42 18V22H48C49.105 22 50 22.895 50 24L52.5 48C52.623 49.176 51.708 50.198 50.532 50.321C50.358 50.339 50.183 50.339 50.01 50.32H13.99C12.814 50.32 11.839 49.393 11.72 48.22L9.22 24.22C9.105 23.112 9.913 22.119 11.021 22.003C11.18 21.987 11.341 21.987 11.501 22H22ZM26 22H38V18C38 14.686 35.314 12 32 12C28.686 12 26 14.686 26 18V22Z" fill="url(#iconGrad)"/>
+</svg>
