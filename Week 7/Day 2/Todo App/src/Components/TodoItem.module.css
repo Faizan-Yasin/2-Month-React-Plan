@@ -1,0 +1,157 @@
+.itemcontainer {
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 3px solid black;
+    border-radius: 0.6rem;
+    padding: 10px;
+    overflow: auto;
+    width: 30vw;
+}
+
+.itembuttonscontainer {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.itembutton {
+    width: 8rem;
+    height: 3rem;
+    padding: 10px 30px 10px 30px;
+    border-radius: 0.6rem;
+}
+
+.itembutton:active {
+    transform: scale(0.95);
+}
+
+.itembutton:hover {
+    cursor: pointer;
+}
+
+.itemeditcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.dark {
+    background-color: #1E2939;
+    color: rgb(208, 206, 206);
+}
+
+.light {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.button1 {
+    background-color: #3b56a5;
+    color: #FFFFFF;
+}
+
+.button2 {
+    background-color: #b50404;
+    color: #FFFFFF;
+}
+
+.button3 {
+    background-color: #18ab02;
+    color: #FFFFFF;
+}
+
+.svglight {
+    stroke: white;
+}
+
+.svgdark {
+    stroke: rgb(208, 206, 206);
+}
+
+@media (max-width: 1920px) {
+    .itemcontainer {
+        width: 60vw;
+    }
+
+    .itembuttonscontainer {
+        gap: 70px;
+    }
+
+    .itembutton {
+        width: 10vw;
+        height: 3rem;
+        padding: 10px 30px 10px 30px;
+        border-radius: 0.6rem;
+    }
+}
+
+@media (max-width: 1600px) {
+    .itembuttonscontainer {
+        gap: 70px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .itembuttonscontainer {
+        gap: 30px;
+    }
+
+    .itembutton {
+        width: 20vw;
+        height: 3rem;
+        padding: 10px 20px 10px 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .itembuttonscontainer {
+        gap: 30px;
+    }
+
+    .itembutton {
+        width: 20vw;
+        height: 2.5rem;
+        padding: 10px 20px 10px 20px;
+    }
+
+    .edittext {
+        display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    .itembuttonscontainer {
+        gap: 20px;
+    }
+
+    .itembutton {
+        width: 15vw;
+        height: 2rem;
+        padding: 5px 10px 5px 10px;
+        font-size: 0.4rem;
+    }
+
+    .itemtitle {
+        font-size: 1.2rem;
+    }
+
+    .itemdescription {
+        font-size: 1rem;
+    }
+
+    .itemcreatedat {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .itembutton {
+        width: 15vw;
+        height: 1.5rem;
+        padding: 3px 7px 3px 7px;
+        font-size: 0.4rem;
+    }
+}
