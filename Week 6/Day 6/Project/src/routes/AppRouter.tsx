@@ -1,16 +1,20 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useLocation } from 'react-router'
+import { Suspense, lazy } from 'react'
 import MainLayout from '../layouts/MainLayout'
-import Home from '../pages/Home'
-import MovieDetail from '../pages/MovieDetail'
-import NotFound from '../pages/NotFound'
-import SearchPage from '../pages/SearchPage'
-import FavouritesPage from '../pages/FavouritesPage'
-import { Suspense } from 'react'
 import MovieDetailSkeleton from '../components/skeletons/MovieDetailSkeleton'
 import CastSkeleton from '../components/skeletons/CastSkeleton'
 import MovieGridSkeleton from "../components/skeletons/MovieGridSkeleton"
+import NotFoundSkeleton from '../components/skeletons/NotFoundSkeleton'
+import SearchPageSkeleton from '../components/skeletons/SearchPageSkeleton'
+
+const Home = lazy(() => import("../pages/Home"))
+const MovieDetail = lazy(() => import("../pages/MovieDetail"))
+const NotFound = lazy(() => import("../pages/NotFound"))
+const SearchPage = lazy(() => import("../pages/SearchPage"))
+const FavouritesPage = lazy(() => import("../pages/FavouritesPage"))
 
 const AppRouter = () => {
+    const location = useLocation()
     return (
         <Routes>
 
@@ -18,7 +22,7 @@ const AppRouter = () => {
 
                 <Route path='/' element={
                     <>
-                        <Suspense fallback={
+                        <Suspense key={location.pathname} fallback={
                             <>
                                 <h2 className='text-3xl font-bold mb-8'>
 
@@ -34,7 +38,7 @@ const AppRouter = () => {
                 } />
                 <Route path='/movie/:id' element={
                     <>
-                        <Suspense fallback={
+                        <Suspense key={location.pathname}  fallback={
                             <>
                                 <MovieDetailSkeleton />
                                 <CastSkeleton />
@@ -45,12 +49,43 @@ const AppRouter = () => {
                         </Suspense>
                     </>
                 } />
-                <Route path='/search' element={<SearchPage />} />
-                <Route path='/favourites' element={<FavouritesPage />} />
+                <Route path='/search' element={<>
+                    <Suspense key={location.pathname}  fallback={
+                        <>
+                            <h2 className='text-3xl font-bold mb-8'>
+
+                                Search Movies
+
+                            </h2>
+                            <SearchPageSkeleton />
+                        </>
+                    }>
+                        <SearchPage />
+                    </Suspense>
+                </>} />
+
+                <Route path='/favourites' element={<>
+                    <Suspense key={location.pathname}  fallback={
+                        <>
+                            <h2 className='text-3xl font-bold mb-8'>
+
+                                Favourite Movies
+
+                            </h2>
+                            <MovieGridSkeleton />
+                        </>
+                    }>
+                        <FavouritesPage />
+                    </Suspense>
+                </>} />
 
             </Route>
 
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<>
+                <Suspense key={location.pathname}  fallback={<NotFoundSkeleton />}>
+                    <NotFound />
+                </Suspense>
+            </>} />
 
         </Routes>
     )

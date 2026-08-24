@@ -5,13 +5,16 @@ import { FaRegHeart } from "react-icons/fa"
 import { useFavouriteStore } from '../store/favouriteStore'
 import { toast } from 'react-toastify'
 import type { MovieCardProps } from '../types/tmdb'
+import { prefetchMovieDetail } from '../utils/routePrefetch'
 
 const MovieCard = ({ movie }: MovieCardProps) => {
 
     const { toggleFavourite, isFavourite } = useFavouriteStore()
 
     return (
-        <div className='bg-white text-gray-600 dark:bg-zinc-800 dark:text-gray-300 relative rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer'>
+        <div
+            onMouseEnter={prefetchMovieDetail}
+            className='bg-white text-gray-600 dark:bg-zinc-800 dark:text-gray-300 relative rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer'>
             <img className='w-full h-80 transition-transform duration-300 hover:scale-105' src={getPoster(movie.poster_path)} alt={movie.title} loading="lazy" onError={(e) => {
                 e.currentTarget.src = "/placeholder.png"
             }} />
