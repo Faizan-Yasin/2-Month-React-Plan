@@ -1,7 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useInfiniteSearchMovies } from "../hooks/useInfiniteSearchMovies"
 import MovieGrid from "../components/MovieGrid"
-import { useDebounce } from '../hooks/useDebounce'
+import { useDebounce } from '../hooks/useDebounce' // Aapka custom hook
 import { useSearchParams } from 'react-router'
 import { useInView } from 'react-intersection-observer'
 import { IoSearch } from "react-icons/io5"
@@ -9,14 +9,21 @@ import MovieGridSkeleton from "../components/skeletons/MovieGridSkeleton"
 import { motion } from 'framer-motion'
 
 const SearchPage = () => {
-
-    const { ref, inView } = useInView({
-        rootMargin: "300px",
-    })
+    const { ref, inView } = useInView({ rootMargin: "300px" })
     const [searchParams, setSearchParams] = useSearchParams()
-    const query = searchParams.get("query") || ""
-    const debouncedQuery = useDebounce(query);
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteSearchMovies(debouncedQuery)
+    const initialQuery = searchParams.get("query") || ""
+    const [text, setText] = useState(initialQuery)
+    const debouncedText = useDebounce(text)
+
+    useEffect(() => {
+        if (debouncedText.trim()) {
+            setSearchParams({ query: debouncedText }, { replace: true })
+        } else {
+            setSearchParams({}, { replace: true })
+        }
+    }, [debouncedText, setSearchParams])
+
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteSearchMovies(debouncedText)
     const movies = data?.pages.flatMap(page => page.results) || []
 
     useEffect(() => {
@@ -30,13 +37,9 @@ const SearchPage = () => {
     }, [hasNextPage, inView, fetchNextPage, isFetchingNextPage])
 
     return (
-
         <div>
-
             <h2 className='text-3xl font-bold mb-8'>
-
                 Search Movies
-
             </h2>
 
             <motion.div
@@ -50,28 +53,19 @@ const SearchPage = () => {
 
                 <input
                     type="text"
-                    value={query}
-                    onChange={(e) => {
-                        const value = e.target.value
-                        if (value.trim()) {
-                            setSearchParams({
-                                query: value,
-                            })
-                        }
-                        else {
-                            setSearchParams({})
-                        }
-                    }}
+                    value={text} 
+                    onChange={(e) => setText(e.target.value)} 
                     className="pl-13 font-semibold w-full px-5 py-4 rounded-xl bg-white dark:bg-zinc-900 border text-gray-600 dark:text-gray-200 border-gray-200 dark:border-zinc-700 outline-none mb-8"
                 />
             </motion.div>
 
             {isLoading && <MovieGridSkeleton />}
 
-            {query.trim() !== debouncedQuery.trim() && (<p className="mt-2 text-gray-600 font-semibold dark:text-gray-200 mb-4">Typing...</p>)}
+            {text.trim() !== debouncedText.trim() && (
+                <p className="mt-2 text-gray-600 font-semibold dark:text-gray-200 mb-4">Typing...</p>
+            )}
 
-            {debouncedQuery.length >= 2 && movies.length === 0 && !isLoading && query.trim() === debouncedQuery.trim() && (
-
+            {debouncedText.length >= 2 && movies.length === 0 && !isLoading && text.trim() === debouncedText.trim() && (
                 <div className="text-center py-16 flex justify-center items-center flex-col">
                     <img src="/logo.svg" alt="logo" className='w-8' />
 
@@ -83,7 +77,6 @@ const SearchPage = () => {
                         Try another movie title.
                     </p>
                 </div>
-
             )}
 
             {!isLoading && movies.length > 0 && (
@@ -105,7 +98,6 @@ const SearchPage = () => {
                     No more movies.
                 </p>
             )}
-
         </div>
     )
 }
